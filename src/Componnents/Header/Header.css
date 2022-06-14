@@ -1,0 +1,38 @@
+.header {
+    padding: 5px;
+    background: #fff;
+    grid-area: header;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr minmax(auto, 150px) minmax(auto, 800px) 1fr;
+    align-items: center;
+    border-bottom: 0.5px solid #dce1e6;
+}
+.header__menu {
+    grid-column: 3 / 4;
+}
+.header__logo {
+    grid-column: 2 / 3;
+}
+.header__logo img{
+    width: 40px;
+    height: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.header__logo a{
+    font-size: 20px;
+    color: #000;
+    text-decoration: none; /* подчеркивание */
+}
+
+.header__list {
+    display: grid; /*автозаполняем колонки*/
+    grid-auto-flow: column;
+    justify-items: end; /* по левому краю */
+}
+.header__link {
+    color: #8b939d;
+    text-decoration: none; /* подчеркивание */
+}

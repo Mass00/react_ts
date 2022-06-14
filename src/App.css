@@ -1,0 +1,20 @@
+html, body {
+  height: 100vh;
+  background: #edeef0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-rows: minmax(50px, auto) 1fr minmax(70px, auto);
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
