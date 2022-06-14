@@ -11,6 +11,7 @@
 .header__menu {
     grid-column: 3 / 4;
 }
+
 .header__logo {
     grid-column: 2 / 3;
 }
@@ -31,6 +32,7 @@
     display: grid; /*автозаполняем колонки*/
     grid-auto-flow: column;
     justify-items: end; /* по левому краю */
+    list-style-type: none; /* Убираем маркеры */
 }
 .header__link {
     color: #8b939d;

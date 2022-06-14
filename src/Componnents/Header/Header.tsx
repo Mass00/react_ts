@@ -11,7 +11,7 @@ export function Header() {
             <nav className="header__menu">
                 <ul className="header__list">
                     <li>
-                        <a href="#" className="header__link">Пункт меню</a>
+                        <input></input>
                     </li>
                     <li>
                         <a href="#" className="header__link">Пункт меню</a>
