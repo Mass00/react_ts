@@ -28,7 +28,7 @@ export function Main() {
                 </section>
                 <section className="content__userinfo">
                     <div className="userinfo__username">
-                    <h2>USER.NAME</h2>
+                    <h2>USER.NAME!</h2>
                     </div>
                     <div className="userinfo__list">
                         <div className="userinfo__birthday">
