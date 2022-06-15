@@ -10,14 +10,11 @@ export function Main() {
     return (
         <main className="main">
             <Sidebar />
-            <BrowserRouter>
             <Routes>
-                    <Route path="" element={<Profile />} />
                     <Route path="/" element={<Profile />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/dialogs" element={<Dialogs />} />
              </Routes>
-             </BrowserRouter>
         </main>
     );
 }
