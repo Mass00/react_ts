@@ -1,23 +1,16 @@
 import React from "react";
+import { Menu } from "./Menu/Menu";
 import styles from "./Sidebar.module.css";
 
 export function Sidebar() {
     return (
         <aside className={styles.sidebar}>
-            <nav className="sidebar__menu">
+            <nav className={styles.menu}>
                 <ul className={styles.list}>
-                    <li>
-                        <a href="#" className="sidebar__link">Пункт меню</a>
-                    </li>
-                    <li>
-                        <a href="#" className="sidebar__link">Пункт меню</a>
-                    </li>
-                    <li>
-                        <a href="#" className="sidebar__link">Пункт меню</a>
-                    </li>
-                    <li>
-                        <a href="#" className="sidebar__link">Пункт меню</a>
-                    </li>
+                    < Menu text="Мой профиль" link="/profile"/>
+                    < Menu text="Сообщения" link="#"/>
+                    < Menu text="Неопределено" link="#"/>
+                    < Menu text="Неопределено" link="#"/>
                 </ul>
             </nav>
         </aside>

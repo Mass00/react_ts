@@ -1,6 +1,9 @@
 .sidebar {
     grid-column: 2 / 3;
 }
+.sidebar ul{
+    padding: 0px;
+}
 .list {
     list-style-type: none; /* Убираем маркеры */
 }

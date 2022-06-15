@@ -1,0 +1,45 @@
+
+
+.userpost_info {
+    padding: 10px 0px 0px 10px;
+    margin-right: 10px;
+    display: grid;
+    grid-template-rows: minmax(30px, auto) 1fr;
+    grid-template-columns: minmax(30px, 60px) 1fr;
+    grid-template-areas:
+        "avatar username"
+        "avatar date";
+}
+
+.avatar {
+    grid-area: avatar;
+
+}
+
+.avatar img {
+    height: 59px;
+    width: 59px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.username {
+    padding-left: 10px;
+    grid-area: username;
+    font-weight: 500;
+    color: #2a5885;
+    font-size: 13px;
+}
+
+.date {
+    padding-left: 10px;
+    grid-area: date;
+    color: #818c99;
+    font-size: 12.5px;
+}
+
+.inner_content {
+    padding: 0px 0px 10px 10px;
+}

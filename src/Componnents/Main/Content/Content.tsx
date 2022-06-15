@@ -1,14 +1,19 @@
 import React from "react";
-import "./Content.css";
-import { Userinfo } from "./Userinfo/Userinfo";
-import { Usersettings } from "./Usersettings/Usersettings";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styles from "./Content.module.css"
+import { Profile } from "./Profile/Profile";
 
 export function Content() {
     return (
-        <section className="content">
-            <Usersettings />
-            <Userinfo />
-            <section className="content_userposts">POSTS</section>
-        </section>
+        <BrowserRouter>
+            <section className={styles.content}>
+                <Routes>
+                    <Route path="" element={<Profile />} />
+                </Routes>
+                <Routes>
+                    <Route path="/profile" element={<Profile />} />
+                </Routes>
+            </section>
+        </BrowserRouter>
     );
 }
