@@ -6,7 +6,7 @@ import { Usersettings } from "./Usersettings/Usersettings";
 
 export function Profile() {
     return (
-        <>
+        <section className={styles.content}>
             <Usersettings />
             <Userinfo />
             <section className={styles.userpost_content}>
@@ -21,6 +21,6 @@ export function Profile() {
                     date="29.08.2022"
                 />
             </section>
-        </>
+        </section>
     );
 }

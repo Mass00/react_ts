@@ -1,14 +1,23 @@
 import React from "react";
-import { Content } from "./Content/Content";
 import { Sidebar } from "./Sidebar/Sidebar";
 import "./Main.css";
+import { Profile } from "./Content/Profile/Profile";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Dialogs } from "./Content/Dialogs/Dialogs";
 
 
 export function Main() {
     return (
         <main className="main">
             <Sidebar />
-            <Content />
+            <BrowserRouter>
+            <Routes>
+                    <Route path="" element={<Profile />} />
+                    <Route path="/" element={<Profile />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/dialogs" element={<Dialogs />} />
+             </Routes>
+             </BrowserRouter>
         </main>
     );
 }

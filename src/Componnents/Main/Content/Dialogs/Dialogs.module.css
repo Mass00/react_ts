@@ -1,0 +1,20 @@
+.content {
+    grid-column: 3 / 4;
+    display: grid;
+    grid-template-columns: minmax(550px, auto) minmax(250px, auto);
+    grid-gap: 15px;
+}
+
+.dialogs_list {
+    border: 0.5px solid #dce1e6;
+    background: #fff;
+    border-radius: 3px;
+}
+
+
+.settings {
+    border: 0.5px solid #dce1e6;
+    background: #fff;
+    border-radius: 3px;
+    max-height: 250px;
+}

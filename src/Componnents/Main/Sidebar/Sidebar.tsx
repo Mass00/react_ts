@@ -8,7 +8,7 @@ export function Sidebar() {
             <nav className={styles.menu}>
                 <ul className={styles.list}>
                     < Menu text="Мой профиль" link="/profile"/>
-                    < Menu text="Сообщения" link="#"/>
+                    < Menu text="Сообщения" link="/dialogs"/>
                     < Menu text="Неопределено" link="#"/>
                     < Menu text="Неопределено" link="#"/>
                 </ul>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation, NavLink } from "react-router-dom";
 import styles from "./Menu.module.css";
 
 type menuProps = {
@@ -7,9 +8,13 @@ type menuProps = {
 }
 
 export function Menu(props: menuProps) {
+    let a = useLocation();
+    console.log(a);
+    
     return (
         <li>
-            <a href={props.link} className={styles.link}>{props.text}</a>
+            <NavLink to={props.link} className={styles.link}>{props.text}</NavLink>
+          
         </li>
     );
 }
