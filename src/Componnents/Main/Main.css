@@ -1,6 +1,7 @@
 .main {
     grid-area: main;
     padding: 0 0 0 0;
+    grid-gap: 5px;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr minmax(auto, 150px) minmax(auto, 800px) 1fr;
