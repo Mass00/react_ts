@@ -2,36 +2,24 @@
     grid-column: 3 / 4;
     display: grid;
     grid-template-columns: minmax(550px, auto) minmax(250px, auto);
-    grid-template-rows: minmax(450px, auto);
     grid-gap: 15px;
+    border-bottom: none;
 }
 
 .dialogs_list {
     border: 0.5px solid #dce1e6;
     background: #fff;
     border-radius: 3px;
-
 }
 
-.list {
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none; /* Убираем маркеры */
-}
-.link {
-    text-decoration: none;
-}
-
-.link:visited {
-    color: black !important;
-}
-.link:link {
-    color: black;
-}
 
 .settings {
     border: 0.5px solid #dce1e6;
     background: #fff;
     border-radius: 3px;
-    max-height: 50px;
+    max-height: 100px;
+}
+
+.dialogs_settings ul{
+    border-bottom: 0.5px solid #dce1e6;
 }

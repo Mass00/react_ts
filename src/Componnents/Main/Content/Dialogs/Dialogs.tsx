@@ -1,25 +1,40 @@
 import React from "react";
 import styles from "./Dialogs.module.css";
-import { Messege } from "./Messege/Messege";
+import {Messege} from "./Messege/Messege";
+import {NavLink} from "react-router-dom";
+import {IDialog, IUser} from "../../../../App";
 
 
-export function Dialogs() {
+interface IDialogs {
+    users: IUser[],
+    dialogs: IDialog[]
+}
+
+export function Dialogs (props: IDialogs){
+
     return (
         <section className={styles.content}>
             <section className={styles.dialogs_list}>
-            <Messege username="Gordon Friman" text="Хоп Хей Лала Хей. Где искал ты всех друзей?" />
-            <Messege username="Gordon Friman" text="Хоп Хей Лала Хей. Где искал ты всех друзей?" />
-            <Messege username="Gordon Friman" text="Хоп Хей Лала Хей. Где искал ты всех друзей?" />
-            <Messege username="Gordon Friman" text="Хоп Хей Лала Хей. Где искал ты всех друзей?" />
+                <ul className={styles.list}>
+                    {props.dialogs
+                        .filter((item, index, arr) => arr.findIndex(i => i.dialogId === index))
+                        .map(item => {
+                            return (
+                                <NavLink className={styles.link} to={"/dialogs/" + item.dialogId}>
+                                    <Messege id={item.dialogId} username={props.users[item.userId].name}
+                                             text={item.text}/>
+                                </NavLink>
+                            );
+                        })}
+                </ul>
             </section>
             <section className={styles.settings}>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet. Lorem, ipsum dolor.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-                </ul>
+                <div className={styles.dialogs_settings}>
+                    <ul>
+                        <li>Все чаты</li>
+                        <li>Не прочитанные</li>
+                    </ul>
+                </div>
             </section>
         </section>
     );

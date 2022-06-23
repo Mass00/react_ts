@@ -3,6 +3,8 @@ import styles from "./Post.module.css";
 import avatarImg from "./avatars/avatar.jpg"
 import { type } from "os";
 
+
+
 type userProps = {
     text: string;
     userName: string;

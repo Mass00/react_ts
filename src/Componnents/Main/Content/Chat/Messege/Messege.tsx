@@ -8,9 +8,10 @@ type messegeProps = {
     text: string,
     id: number
 }
-export function Messege(props: messegeProps) {
+export function PrivateMessege(props: messegeProps) {
+
     return (
-        <li key = {props.id}>
+        <li className={styles.link} key={props.id}>
             <div className={styles.messege}>
                 <div className={styles.avatar}>
                     <img src={avatar} />

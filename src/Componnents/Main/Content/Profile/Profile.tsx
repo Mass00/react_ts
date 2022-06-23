@@ -5,6 +5,7 @@ import { Userinfo } from "./Userinfo/Userinfo";
 import { Usersettings } from "./Usersettings/Usersettings";
 
 export function Profile() {
+
     return (
         <section className={styles.content}>
             <Usersettings />
