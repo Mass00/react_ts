@@ -1,14 +1,16 @@
 import React from "react";
 import styles from './Chat.module.css'
 import {useParams} from "react-router-dom";
-import {PrivateMessege} from "../Chat/Messege/Messege";
-import {IDialog, IUser} from "../../../../App";
+import {PrivateMessege} from "./Message/Message";
+import {IDialog, IUser} from "../../../../Redux/State";
+
 
 interface IChat {
     users: IUser[],
     dialogs: IDialog[]
 }
-export const Chat: React.FC<IChat> = ( props ) => {
+
+export const Chat: React.FC<IChat> = (props) => {
     const {id} = useParams()
     const currId = Number(id)
     console.log(currId)
@@ -18,10 +20,9 @@ export const Chat: React.FC<IChat> = ( props ) => {
                 {props.dialogs
                     .filter(item => item.dialogId === currId)
                     .map(item => {
-                        return(
-                          // <PrivateMessege id={item.dialogId} username={props.users[item.id].name}
-                          //          text={item.text} />
-                            <PrivateMessege username={props.users[item.id-1].name} text={item.text} id={item.dialogId}/>
+                        return (
+                            <PrivateMessege username={props.users[item.id - 1].name} text={item.text}
+                                            id={item.dialogId}/>
                         );
                     })
                 }

@@ -1,15 +1,23 @@
 import React from "react";
-import { Menu } from "./Menu/Menu";
+import {Menu} from "./Menu/Menu";
 import styles from "./Sidebar.module.css";
+import {ISideBarMenu} from "../../../Redux/State";
 
 
-export function Sidebar() {
+interface ISidebar {
+    menu: ISideBarMenu[]
+}
+
+export const Sidebar: React.FC<ISidebar> = ({menu}) => {
     return (
         <aside className={styles.sidebar}>
             <nav className={styles.menu}>
                 <ul className={styles.list}>
-                    < Menu text="Мой профиль" link="/profile" ico={2}/>
-                    < Menu text="Сообщения" link="/dialogs" ico={1}/>
+                    {menu.map( item => {
+                        return(
+                            < Menu text={item.name} link={`/${item.link}`} ico={item.ico}/>
+                        );
+                    })}
                 </ul>
             </nav>
         </aside>

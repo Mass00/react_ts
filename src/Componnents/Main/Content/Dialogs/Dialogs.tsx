@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./Dialogs.module.css";
-import {Messege} from "./Messege/Messege";
+import {Message} from "./Message/Message";
 import {NavLink} from "react-router-dom";
-import {IDialog, IUser} from "../../../../App";
+import {IUser, IDialog} from "../../../../Redux/State";
+
 
 
 interface IDialogs {
@@ -21,7 +22,7 @@ export function Dialogs (props: IDialogs){
                         .map(item => {
                             return (
                                 <NavLink className={styles.link} to={"/dialogs/" + item.dialogId}>
-                                    <Messege id={item.dialogId} username={props.users[item.userId].name}
+                                    <Message id={item.dialogId} username={props.users[item.userId].name}
                                              text={item.text}/>
                                 </NavLink>
                             );

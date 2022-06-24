@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Messege.module.css";
+import styles from "./Message.module.css";
 import avatar from "./avatars/avatar.jpg";
 
 
@@ -8,7 +8,7 @@ type messegeProps = {
     text: string,
     id: number
 }
-export function Messege(props: messegeProps) {
+export function Message(props: messegeProps) {
     return (
         <li key = {props.id}>
             <div className={styles.messege}>

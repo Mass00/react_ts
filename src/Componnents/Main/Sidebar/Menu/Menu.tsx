@@ -4,7 +4,7 @@ import styles from "./Menu.module.css";
 import profileico from "./img/profile.png";
 import messegeico from "./img/messege.png";
 import defaultico from "./img/default.png";
-import { Messege } from "../../Content/Dialogs/Messege/Messege";
+import { Message } from "../../Content/Dialogs/Message/Message";
 
 type menuProps = {
     text: string,

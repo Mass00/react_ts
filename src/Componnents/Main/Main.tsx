@@ -1,13 +1,18 @@
 import React from "react";
-import { Sidebar } from "./Sidebar/Sidebar";
+import {Sidebar} from "./Sidebar/Sidebar";
 import "./Main.css";
-import { Outlet } from "react-router-dom";
+import {Outlet} from "react-router-dom";
+import {ISideBarMenu} from "../../Redux/State";
 
-export function Main() {
+interface IMain {
+    menu: ISideBarMenu[]
+}
+
+export const Main: React.FC<IMain> = ({menu}) => {
     return (
         <main className="main">
-            <Sidebar />
-            <Outlet />
+            <Sidebar menu={menu}/>
+            <Outlet/>
         </main>
     );
 }
