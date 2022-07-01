@@ -3,17 +3,18 @@ import styles from './Chat.module.css'
 import {useParams} from "react-router-dom";
 import {PrivateMessege} from "./Message/Message";
 import {IDialog, IUser} from "../../../../Redux/State";
+import {IQuickChat} from "../../../../App";
 
 
 interface IChat {
     users: IUser[],
-    dialogs: IDialog[]
+    dialogs: IDialog[],
+    quickChat: IQuickChat[]
 }
 
 export const Chat: React.FC<IChat> = (props) => {
     const {id} = useParams()
     const currId = Number(id)
-    console.log(currId)
     return (
         <section className={styles.content}>
             <section className={styles.dialogs_list}>
@@ -36,8 +37,12 @@ export const Chat: React.FC<IChat> = (props) => {
                 </div>
                 <div className={styles.selected_chats}>
                     <ul>
-                        <li>Вася Пупкин Х</li>
-                        <li>Маша Калькова Х</li>
+                        {props.quickChat?.map(item => {
+                            return(
+                                <li key={item.id}>{item.userName}</li>
+                                )
+                        })}
+
                     </ul>
                 </div>
             </section>

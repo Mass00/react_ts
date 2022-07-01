@@ -1,14 +1,15 @@
-import React from "react";
+import React, {Dispatch, SetStateAction, useState} from "react";
 import styles from "./Dialogs.module.css";
 import {Message} from "./Message/Message";
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {IUser, IDialog} from "../../../../Redux/State";
 
 
 
 interface IDialogs {
     users: IUser[],
-    dialogs: IDialog[]
+    dialogs: IDialog[],
+    handlerOnClick(id: number, userName: string): void
 }
 
 export function Dialogs (props: IDialogs){
@@ -20,18 +21,25 @@ export function Dialogs (props: IDialogs){
                     {props.dialogs
                         .filter((item, index, arr) => arr.findIndex(i => i.dialogId === index))
                         .map(item => {
+                            if(item.owner === true){
                             return (
-                                <NavLink className={styles.link} to={"/dialogs/" + item.dialogId}>
+                                <Link className={styles.link}
+                                      to={"/dialogs/" + item.dialogId}
+                                      onClick={ () => props.handlerOnClick(item.userId, props.users[item.userId].name)}>
                                     <Message id={item.dialogId} username={props.users[item.userId].name}
                                              text={item.text}/>
-                                </NavLink>
-                            );
+                                </Link>
+                            );}
                         })}
                 </ul>
             </section>
             <section className={styles.settings}>
                 <div className={styles.dialogs_settings}>
-                    <ul>
+                    <ul> {props.users.map( item => {
+                        return(
+                          <></>
+                        );
+                    })}
                         <li>Все чаты</li>
                         <li>Не прочитанные</li>
                     </ul>
