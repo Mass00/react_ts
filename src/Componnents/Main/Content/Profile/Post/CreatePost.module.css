@@ -1,0 +1,38 @@
+.userpost_add {
+    display: block;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 15px 15px 15px;
+    border-radius: 3px;
+    border: 0.5px solid #dce1e6;
+    background: #fff;
+}
+.userpost_addd {
+    padding: 5px 10px 5px 10px;
+    margin: 0px 15px 15px 15px;
+    border-radius: 3px;
+    border: 0.5px solid #dce1e6;
+    background: #fff;
+}
+.userpost_addd textarea{
+    border: none;
+    clear: left;
+    resize: none;
+    min-height: 15px;
+    width: 100%;
+    outline: none;
+}
+
+.userpost_add textarea {
+    border: none;
+    clear: left;
+    resize: none;
+    min-height: 50px;
+    width: 100%;
+    outline: none;
+}
+
+.empty {
+    border-top: 0.5px solid #dce1e6;
+    display: flex;
+    justify-content: space-between;
+}
