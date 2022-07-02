@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./Post.module.css";
+import styles from "./PostItem.module.css";
 import avatarImg from "./avatars/avatar.jpg"
 import { type } from "os";
 
@@ -11,7 +11,7 @@ type userProps = {
     date: string;
 }
 
-export function Post(props: userProps) {
+export function PostItem(props: userProps) {
     return (
         <div>
             <div className={styles.userpost_info}>

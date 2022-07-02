@@ -1,13 +1,17 @@
 import React from "react";
-import {Post} from "./Post/Post";
+import {PostItem} from "./Post/PostItem";
 import styles from "./Profile.module.css";
 import {Userinfo} from "./Userinfo/Userinfo";
 import {Usersettings} from "./Usersettings/Usersettings";
-import {CreatePost} from "./Post/createPost";
+import {CreatePost} from "./Post/CreatePost";
+import {PostList} from "./Post/PostList";
+import {IPost} from "../../../../App";
 
 interface IProfile {
+    posts: IPost[]
     activPost: boolean,
-    handlerOnClickExpandPost(): void
+    handlerOnClickExpandPostForm(): void
+    handlerOnClickAddPost(text: string, userName: string): void
 }
 
 export const Profile: React.FC<IProfile> = (props) => {
@@ -17,24 +21,12 @@ export const Profile: React.FC<IProfile> = (props) => {
             <Usersettings/>
             <section className={styles.test}>
                 <Userinfo/>
-                <CreatePost activPost={props.activPost} handlerOnClickExpandPost={props.handlerOnClickExpandPost}/>
-                <section className={styles.userpost_content}>
-                    <Post
-                        text="Первый комментаpий. Жили были, и дружили. Кто его знает?"
-                        userName="Gordon Friman"
-                        date="29.08.2022"
-                    />
-                    <Post
-                        text="Второй комментарий. Жили были, и дружили. Кто его знает?"
-                        userName="Gordon Friman"
-                        date="29.08.2022"
-                    />
-                    <Post
-                        text="Второй комментарий. Жили были, и дружили. Кто его знает?"
-                        userName="Gordon Friman"
-                        date="29.08.2022"
-                    />
-                </section>
+                <CreatePost
+                    activPost={props.activPost}
+                    handlerOnClickExpandPostForm={props.handlerOnClickExpandPostForm}
+                    handlerOnClickAddPost={props.handlerOnClickAddPost}
+                />
+                <PostList posts={props.posts}/>
             </section>
         </section>
     );
