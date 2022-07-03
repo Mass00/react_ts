@@ -18,23 +18,44 @@ export interface IQuickChat {
     id: number,
     userName: string
 }
-export interface IPost{
+
+export interface IPost {
+    id: number
     text: string,
     userName: string,
-    date: string
+    date: Date
 }
+
 const App: React.FC<IApp> = (props) => {
     const [posts, setPost] = useState<IPost[]>([
-        {text: 'Первый комментаpий. Жили были, и дружили. Кто его знает?', userName: 'Gordon Friman', date: '29.08.1990'},
-        {text: 'Второй комментаpий. Жили были, и дружили. Кто его знает?', userName: 'Gordon Friman', date: '29.08.1991'}
-    ])
+        {
+            id: 1,
+            text: 'Первый комментаpий. Жили были, и дружили. Кто его знает?',
+            userName: 'Gordon Friman',
+            date: new Date()
+        }, {
+            id: 2,
+            text: 'Второй комментаpий. Жили были, и дружили. Кто его знает?',
+            userName: 'Gordon Friman',
+            date: new Date()
+        }])
     const [quickChat, setQuickChat] = useState<IQuickChat[]>([])
-    const [activatePost,setActivatePost] = useState<boolean>(false);
+    const [activatePost, setActivatePost] = useState<boolean>(false);
+
+                /* Форма постов*/
     const handlerOnClickExpandPostForm = () => {
         setActivatePost(true)
     }
-    const handlerAddUser = (id: number, userName: string) => {
-        if (!(quickChat.filter(item => item.userName === userName).length)){
+    const handlerOnClickAddPost = (text: string, userName: string) => {
+        setPost(prev => [...prev, {id: Date.now() ,text: text, userName: userName, date: new Date()}])
+        setActivatePost(false)
+    }
+    const handlerOnClickRemovePost = (id: number) => {
+        setPost(prev=> prev.filter(item => item.id !== id))
+    }
+                /* Форма чата */
+    const handlerOnClickAddUser = (id: number, userName: string) => {
+        if (!(quickChat.filter(item => item.userName === userName).length)) {
             const temp: IQuickChat = {
                 id: id,
                 userName: userName
@@ -42,10 +63,7 @@ const App: React.FC<IApp> = (props) => {
             setQuickChat(prev => [...prev, temp])
         }
     }
-    const handlerOnClickAddPost = (text: string, userName: string) => {
-        setPost(prev => [...prev,{text: text, userName: userName, date: '29.08.2000'}])
-        setActivatePost(false)
-    }
+
     return (
         /* Grid-container */
         <div className="App">
@@ -56,19 +74,21 @@ const App: React.FC<IApp> = (props) => {
                         activPost={activatePost}
                         handlerOnClickExpandPostForm={handlerOnClickExpandPostForm}
                         handlerOnClickAddPost={handlerOnClickAddPost}
+                        handlerOnClickRemovePost={handlerOnClickRemovePost}
                         posts={posts}
 
                     />}/>
                     <Route path="profile" element={<Profile
-                        activPost={activatePost }
+                        activPost={activatePost}
                         handlerOnClickExpandPostForm={handlerOnClickExpandPostForm}
                         handlerOnClickAddPost={handlerOnClickAddPost}
+                        handlerOnClickRemovePost={handlerOnClickRemovePost}
                         posts={posts}
                     />}/>
                     <Route path="dialogs"
                            element={<Dialogs users={props.appState.users}
                                              dialogs={props.appState.dialogs}
-                                             handlerOnClick={handlerAddUser}
+                                             handlerOnClick={handlerOnClickAddUser}
 
                            />}/>
                     <Route path="dialogs/:id"

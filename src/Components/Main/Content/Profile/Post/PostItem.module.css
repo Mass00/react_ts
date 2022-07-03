@@ -2,13 +2,17 @@
     padding: 10px 0px 0px 10px;
     margin-right: 10px;
 }
+.content {
+    padding: 10px 10px 10px 10px;
+    border-bottom: 0.5px solid #dce1e6;
+}
 
 .userpost_info {
     height: 100%;
-    padding: 10px 0px 0px 10px;
+
     margin: 0px 15px 15px 15px;
     display: grid;
-    border-top: 0.5px solid #dce1e6;
+
     grid-template-rows: minmax(30px, auto) 1fr;
     grid-template-columns: minmax(30px, 60px) 1fr;
     grid-template-areas:
@@ -47,4 +51,12 @@
 
 .inner_content {
     padding: 0px 0px 10px 10px;
+}
+
+.settings {
+    display: flex;
+    justify-content: space-between;
+}
+.settings a{
+    cursor: pointer;
 }

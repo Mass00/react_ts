@@ -13,9 +13,9 @@ export interface ISideBarMenu {
 
 export interface IDialog {
     dialogId: number,
+    owner: boolean,
     id: number,
     userId: number,
-    owner: boolean,
     text: string
 }
 
@@ -45,7 +45,7 @@ export let state: IState = {
             dialogId: 1,
             id: 2,
             userId: 2,
-            owner: false,
+            owner: true,
             text: "Здраствуйте, моЯ твоЯ не понимать?"
         }, {
             dialogId: 2,

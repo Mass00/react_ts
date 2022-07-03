@@ -6,20 +6,31 @@ import { type } from "os";
 
 
 type userProps = {
-    text: string;
-    userName: string;
-    date: string;
+    id: number
+    text: string
+    userName: string
+    date: Date
+    handlerOnClickRemovePost(id: number): void
 }
 
 export function PostItem(props: userProps) {
+    const removePost = () => {
+        props.handlerOnClickRemovePost(props.id)
+    }
     return (
-        <div>
+        <div className={styles.content}>
             <div className={styles.userpost_info}>
                 <div className={styles.avatar}><img src={avatarImg} /></div>
                 <div className={styles.username}>{props.userName}</div>
-                <div className={styles.date}>{props.date}</div>
+                <div className={styles.date}>{props.date.toLocaleDateString('ru')}</div>
             </div>
             <div className={styles.inner_content}>{props.text}</div>
+            <div className={styles.settings}>
+            <div></div>
+                <div className={styles.empty}>
+                    <a onClick={removePost}>Удалить</a>
+                </div>
+            </div>
         </div>
     );
 }

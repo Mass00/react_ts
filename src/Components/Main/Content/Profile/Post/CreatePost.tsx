@@ -15,6 +15,7 @@ export const CreatePost: React.FC<ICreatePost> = ({activPost, handlerOnClickExpa
     }
     const handlerOnClickSendPost = () => {
         handlerOnClickAddPost(postValue, 'Gordon Frimann')
+        setPostValue('')
     }
     const rootStyle = [styles.userpost_add]
     if (activPost) {
@@ -25,6 +26,7 @@ export const CreatePost: React.FC<ICreatePost> = ({activPost, handlerOnClickExpa
         <section className={rootStyle.join(' ')} >
             <div>
                     <textarea
+                        value={postValue}
                         onChange={handlerOnChangeGetTextAreaValue}
                         placeholder={activPost ? '' : 'Что у вас нового'}
                         onClick={handlerOnClickExpandPostForm}>

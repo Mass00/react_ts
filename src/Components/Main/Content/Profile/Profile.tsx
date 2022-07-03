@@ -12,6 +12,7 @@ interface IProfile {
     activPost: boolean,
     handlerOnClickExpandPostForm(): void
     handlerOnClickAddPost(text: string, userName: string): void
+    handlerOnClickRemovePost(id: number): void
 }
 
 export const Profile: React.FC<IProfile> = (props) => {
@@ -26,7 +27,10 @@ export const Profile: React.FC<IProfile> = (props) => {
                     handlerOnClickExpandPostForm={props.handlerOnClickExpandPostForm}
                     handlerOnClickAddPost={props.handlerOnClickAddPost}
                 />
-                <PostList posts={props.posts}/>
+                <PostList
+                    posts={props.posts}
+                    handlerOnClickRemovePost={props.handlerOnClickRemovePost}
+                />
             </section>
         </section>
     );
