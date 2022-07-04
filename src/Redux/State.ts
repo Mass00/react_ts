@@ -13,7 +13,6 @@ export interface ISideBarMenu {
 
 export interface IDialog {
     dialogId: number,
-    owner: boolean,
     id: number,
     userId: number,
     text: string
@@ -39,20 +38,27 @@ export let state: IState = {
             dialogId: 1,
             id: 1,
             userId: 1,
-            owner: true,
             text: "Здраствуйте, что вы думаете о сегодняшнем дне?"
         }, {
             dialogId: 1,
             id: 2,
             userId: 2,
-            owner: true,
             text: "Здраствуйте, моЯ твоЯ не понимать?"
         }, {
             dialogId: 2,
             id: 1,
             userId: 1,
-            owner: true,
             text: "Ololotrololol"
+        }, {
+            dialogId: 2,
+            id: 2,
+            userId: 2,
+            text: "TROlolotrololol"
+        }, {
+            dialogId: 3,
+            id: 1,
+            userId: 2,
+            text: "Как ваши делишки?"
         }],
     sideBarMenu: [
         {name: 'Мой профиль', link: 'profile', ico: 1},

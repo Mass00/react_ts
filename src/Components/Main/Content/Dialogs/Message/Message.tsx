@@ -10,14 +10,12 @@ type messegeProps = {
 }
 export function Message(props: messegeProps) {
     return (
-        <li key = {props.id}>
-            <div className={styles.messege}>
+            <div className={styles.messege} >
                 <div className={styles.avatar}>
                     <img src={avatar} />
                 </div>
                 <div className={styles.username}>{props.username}</div>
                 <div className={styles.text}>{props.text}</div>
             </div>
-        </li>
     );
 }
