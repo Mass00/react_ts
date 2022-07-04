@@ -10,8 +10,11 @@ import {IPost} from "../../../../App";
 interface IProfile {
     posts: IPost[]
     activPost: boolean,
+
     handlerOnClickExpandPostForm(): void
+
     handlerOnClickAddPost(text: string, userName: string): void
+
     handlerOnClickRemovePost(id: number): void
 }
 
@@ -27,6 +30,11 @@ export const Profile: React.FC<IProfile> = (props) => {
                     handlerOnClickExpandPostForm={props.handlerOnClickExpandPostForm}
                     handlerOnClickAddPost={props.handlerOnClickAddPost}
                 />
+                <section className={styles.search}>
+                    <div>
+                        <input type={'text'}/>
+                    </div>
+                </section>
                 <PostList
                     posts={props.posts}
                     handlerOnClickRemovePost={props.handlerOnClickRemovePost}

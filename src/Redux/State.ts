@@ -45,6 +45,11 @@ export let state: IState = {
             userId: 2,
             text: "Здраствуйте, моЯ твоЯ не понимать?"
         }, {
+            dialogId: 1,
+            id: 3,
+            userId: 1,
+            text: "Ты, чё Пёс?"
+        }, {
             dialogId: 2,
             id: 1,
             userId: 1,
@@ -53,7 +58,7 @@ export let state: IState = {
             dialogId: 2,
             id: 2,
             userId: 2,
-            text: "TROlolotrololol"
+            text: "Нет никого, кто любил бы боль саму по себе, кто искал бы её и кто хотел бы иметь её просто потому, что это боль."
         }, {
             dialogId: 3,
             id: 1,

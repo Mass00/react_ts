@@ -13,9 +13,9 @@ export const Sidebar: React.FC<ISidebar> = ({menu}) => {
         <aside className={styles.sidebar}>
             <nav className={styles.menu}>
                 <ul className={styles.list}>
-                    {menu.map( item => {
+                    {menu.map( (item, index) => {
                         return(
-                            < Menu text={item.name} link={`/${item.link}`} ico={item.ico}/>
+                            < Menu key={index} text={item.name} link={`/${item.link}`} ico={item.ico}/>
                         );
                     })}
                 </ul>

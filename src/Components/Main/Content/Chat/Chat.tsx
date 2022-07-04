@@ -22,7 +22,7 @@ export const Chat: React.FC<IChat> = (props) => {
                     .filter(item => item.dialogId === currId)
                     .map(item => {
                         return (
-                            <PrivateMessege username={props.users[item.id - 1].name} text={item.text}
+                            <PrivateMessege key={item.id} username={props.users[item.userId - 1].name} text={item.text}
                                             id={item.dialogId}/>
                         );
                     })
