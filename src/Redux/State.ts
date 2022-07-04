@@ -17,11 +17,18 @@ export interface IDialog {
     userId: number,
     text: string
 }
+interface IPosts {
+    id: number,
+    text: string,
+    userId: number,
+    date: Date
+}
 
 export interface IState {
     users: IUser[],
     dialogs: IDialog[],
-    sideBarMenu: ISideBarMenu[]
+    sideBarMenu: ISideBarMenu[],
+    posts: IPosts[]
 }
 
 export let state: IState = {
@@ -68,5 +75,17 @@ export let state: IState = {
     sideBarMenu: [
         {name: 'Мой профиль', link: 'profile', ico: 1},
         {name: 'Сообщения', link: 'dialogs', ico: 2}
-    ]
+    ],
+    posts: [
+        {
+            id: 1,
+            text: 'Первый комментаpий. Жили были, и дружили. Кто его знает?',
+            userId: 1,
+            date: new Date()
+        }, {
+            id: 2,
+            text: 'Второй комментаpий. Жили были, и дружили. Кто его знает?',
+            userId: 1,
+            date: new Date()
+        }]
 }

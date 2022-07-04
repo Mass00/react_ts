@@ -3,9 +3,8 @@ import styles from "./CreatePost.module.css";
 
 interface ICreatePost {
     activPost: boolean,
-
     handlerOnClickExpandPostForm(): void,
-    handlerOnClickAddPost(text: string, userName: string): void
+    handlerOnClickAddPost(text: string, userId: number): void
 }
 
 export const CreatePost: React.FC<ICreatePost> = ({activPost, handlerOnClickExpandPostForm, handlerOnClickAddPost}) => {
@@ -14,7 +13,7 @@ export const CreatePost: React.FC<ICreatePost> = ({activPost, handlerOnClickExpa
         setPostValue(e.target.value)
     }
     const handlerOnClickSendPost = () => {
-        handlerOnClickAddPost(postValue, 'Gordon Frimann')
+        handlerOnClickAddPost(postValue, 1)
         setPostValue('')
     }
     const rootStyle = [styles.userpost_add]

@@ -6,14 +6,16 @@ import {Usersettings} from "./Usersettings/Usersettings";
 import {CreatePost} from "./Post/CreatePost";
 import {PostList} from "./Post/PostList";
 import {IPost} from "../../../../App";
+import {IUser} from "../../../../Redux/State";
 
 interface IProfile {
     posts: IPost[]
+    users: IUser[]
     activPost: boolean,
 
     handlerOnClickExpandPostForm(): void
 
-    handlerOnClickAddPost(text: string, userName: string): void
+    handlerOnClickAddPost(text: string, userId: number): void
 
     handlerOnClickRemovePost(id: number): void
 }
@@ -37,6 +39,7 @@ export const Profile: React.FC<IProfile> = (props) => {
                 </section>
                 <PostList
                     posts={props.posts}
+                    users={props.users}
                     handlerOnClickRemovePost={props.handlerOnClickRemovePost}
                 />
             </section>

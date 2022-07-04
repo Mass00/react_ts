@@ -22,23 +22,12 @@ export interface IQuickChat {
 export interface IPost {
     id: number
     text: string,
-    userName: string,
+    userId: number,
     date: Date
 }
 
 const App: React.FC<IApp> = (props) => {
-    const [posts, setPost] = useState<IPost[]>([
-        {
-            id: 1,
-            text: 'Первый комментаpий. Жили были, и дружили. Кто его знает?',
-            userName: 'Gordon Friman',
-            date: new Date()
-        }, {
-            id: 2,
-            text: 'Второй комментаpий. Жили были, и дружили. Кто его знает?',
-            userName: 'Gordon Friman',
-            date: new Date()
-        }])
+    const [posts, setPost] = useState<IPost[]>(props.appState.posts)
     const [quickChat, setQuickChat] = useState<IQuickChat[]>([])
     const [activatePost, setActivatePost] = useState<boolean>(false);
 
@@ -46,8 +35,8 @@ const App: React.FC<IApp> = (props) => {
     const handlerOnClickExpandPostForm = () => {
         setActivatePost(true)
     }
-    const handlerOnClickAddPost = (text: string, userName: string) => {
-        setPost(prev => [...prev, {id: Date.now() ,text: text, userName: userName, date: new Date()}])
+    const handlerOnClickAddPost = (text: string, userId: number) => {
+        setPost(prev => [...prev, {id: Date.now() ,text: text, userId: userId, date: new Date()}])
         setActivatePost(false)
     }
     const handlerOnClickRemovePost = (id: number) => {
@@ -72,6 +61,7 @@ const App: React.FC<IApp> = (props) => {
                 <Route path="/" element={<Main menu={props.appState.sideBarMenu}/>}>
                     <Route index element={<Profile
                         activPost={activatePost}
+                        users={props.appState.users}
                         handlerOnClickExpandPostForm={handlerOnClickExpandPostForm}
                         handlerOnClickAddPost={handlerOnClickAddPost}
                         handlerOnClickRemovePost={handlerOnClickRemovePost}
@@ -80,6 +70,7 @@ const App: React.FC<IApp> = (props) => {
                     />}/>
                     <Route path="profile" element={<Profile
                         activPost={activatePost}
+                        users={props.appState.users}
                         handlerOnClickExpandPostForm={handlerOnClickExpandPostForm}
                         handlerOnClickAddPost={handlerOnClickAddPost}
                         handlerOnClickRemovePost={handlerOnClickRemovePost}
