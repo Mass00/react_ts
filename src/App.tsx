@@ -21,17 +21,16 @@ export interface IQuickChat {
     userName: string
 }
 
-// export interface IPost {
-//     id: number
-//     text: string,
-//     userId: number,
-//     date: Date
-// }
+export interface IPost {
+    id: number
+    text: string,
+    userId: number,
+    date: Date
+}
 
 const App: React.FC<IApp> = (props) => {
+            /* Форма чата */
     const [quickChat, setQuickChat] = useState<IQuickChat[]>([])
-
-                /* Форма чата */
     const handlerOnClickAddUser = (id: number, userName: string) => {
         if (!(quickChat.filter(item => item.userName === userName).length)) {
             const temp: IQuickChat = {
@@ -49,27 +48,27 @@ const App: React.FC<IApp> = (props) => {
             <Routes>
                 <Route path="/" element={<Main menu={props.appState.sideBarMenu}/>}>
                     <Route index element={<Profile
-                        users={props.appState.users}
+                        users={props.appState.usersData}
                         handlerOnClickAddPost={props.handlerOnClickAddPost}
                         handlerOnClickRemovePost={props.handlerOnClickRemovePost}
-                        posts={props.appState.posts}
+                        posts={props.appState.profileData.posts}
 
                     />}/>
                     <Route path="profile" element={<Profile
-                        users={props.appState.users}
+                        users={props.appState.usersData}
                         handlerOnClickAddPost={props.handlerOnClickAddPost}
                         handlerOnClickRemovePost={props.handlerOnClickRemovePost}
-                        posts={props.appState.posts}
+                        posts={props.appState.profileData.posts}
                     />}/>
                     <Route path="dialogs"
-                           element={<Dialogs users={props.appState.users}
-                                             dialogs={props.appState.dialogs}
+                           element={<Dialogs users={props.appState.usersData}
+                                             dialogs={props.appState.dialogData.dialogs}
                                              handlerOnClick={handlerOnClickAddUser}
 
                            />}/>
                     <Route path="dialogs/:id"
-                           element={<Chat users={props.appState.users}
-                                          dialogs={props.appState.dialogs}
+                           element={<Chat users={props.appState.usersData}
+                                          dialogs={props.appState.dialogData.dialogs}
                                           quickChat={quickChat}
                            />}/>
                 </Route>

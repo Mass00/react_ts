@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-import {handlerOnClickAddPost, handlerOnClickRemovePost, observer, state} from "./Redux/State";
+import {store} from "./Redux/State";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -14,16 +14,17 @@ const reRender = () => {
         <React.StrictMode>
             <BrowserRouter>
                 <App
-                    appState={state}
-                    handlerOnClickAddPost={handlerOnClickAddPost}
-                    handlerOnClickRemovePost={handlerOnClickRemovePost}
+                    appState={store.getState()}
+                    handlerOnClickAddPost={store.addPost.bind(store)}
+                    handlerOnClickRemovePost={store.removePost.bind(store)}
                 />
             </BrowserRouter>
         </React.StrictMode>
     );
 }
 reRender();
-observer(reRender);
+store.subscribe(reRender)
+// store.observer(reRender)
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

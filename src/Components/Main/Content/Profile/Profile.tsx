@@ -6,11 +6,11 @@ import {Usersettings} from "./Usersettings/Usersettings";
 import {CreatePost} from "./Post/CreatePost";
 import {PostList} from "./Post/PostList";
 
-import {IPosts, IUsers} from "../../../../Redux/State";
+import {IPosts, IUsersData} from "../../../../Redux/State";
 
 interface IProfile {
     posts: IPosts[]
-    users: IUsers[]
+    users: IUsersData[]
     handlerOnClickAddPost(text: string, userId: number): void
     handlerOnClickRemovePost(id: number): void
 }
