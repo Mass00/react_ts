@@ -2,17 +2,16 @@ import React, {Dispatch, SetStateAction, useState} from "react";
 import styles from "./Dialogs.module.css";
 import {Message} from "./Message/Message";
 import {Link} from "react-router-dom";
-import {IUser, IDialog} from "../../../../Redux/State";
+import {IUsers, IDialogs} from "../../../../Redux/State";
 
 
-interface IDialogs {
-    users: IUser[],
-    dialogs: IDialog[],
-
+interface IDialog {
+    users: IUsers[],
+    dialogs: IDialogs[],
     handlerOnClick(id: number, userName: string): void
 }
 
-export function Dialogs(props: IDialogs) {
+export function Dialogs(props: IDialog) {
 
     return (
         <section className={styles.content}>

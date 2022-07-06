@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from "../Profile.module.css";
 import {PostItem} from "./PostItem";
-import {IPost} from "../../../../../App";
-import {IUser} from "../../../../../Redux/State";
+
+import {IPosts,IUsers} from "../../../../../Redux/State";
 
 interface IPostList {
-    posts: IPost[]
-    users: IUser[]
+    posts: IPosts[]
+    users: IUsers[]
     handlerOnClickRemovePost(id: number): void
 }
 

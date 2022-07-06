@@ -5,21 +5,15 @@ import {Userinfo} from "./Userinfo/Userinfo";
 import {Usersettings} from "./Usersettings/Usersettings";
 import {CreatePost} from "./Post/CreatePost";
 import {PostList} from "./Post/PostList";
-import {IPost} from "../../../../App";
-import {IUser} from "../../../../Redux/State";
+
+import {IPosts, IUsers} from "../../../../Redux/State";
 
 interface IProfile {
-    posts: IPost[]
-    users: IUser[]
-    activPost: boolean,
-
-    handlerOnClickExpandPostForm(): void
-
+    posts: IPosts[]
+    users: IUsers[]
     handlerOnClickAddPost(text: string, userId: number): void
-
     handlerOnClickRemovePost(id: number): void
 }
-
 export const Profile: React.FC<IProfile> = (props) => {
 
     return (
@@ -28,8 +22,6 @@ export const Profile: React.FC<IProfile> = (props) => {
             <section className={styles.test}>
                 <Userinfo/>
                 <CreatePost
-                    activPost={props.activPost}
-                    handlerOnClickExpandPostForm={props.handlerOnClickExpandPostForm}
                     handlerOnClickAddPost={props.handlerOnClickAddPost}
                 />
                 <section className={styles.search}>

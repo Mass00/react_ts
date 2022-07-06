@@ -1,34 +1,36 @@
-
-
-export interface IUser {
+export interface IUsers {
     id: number,
     name: string
 }
-
 export interface ISideBarMenu {
     name: string,
     link: string,
     ico: number
 }
-
-export interface IDialog {
+export interface IDialogs {
     dialogId: number,
     id: number,
     userId: number,
     text: string
 }
-interface IPosts {
+export interface IPosts {
     id: number,
     text: string,
     userId: number,
     date: Date
 }
-
 export interface IState {
-    users: IUser[],
-    dialogs: IDialog[],
+    users: IUsers[],
+    dialogs: IDialogs[],
     sideBarMenu: ISideBarMenu[],
     posts: IPosts[]
+}
+
+let callObserver:() => void = () => {
+    console.log('rerender')
+}
+export const observer = (callback: () => void) => {
+    callObserver = callback
 }
 
 export let state: IState = {
@@ -88,4 +90,12 @@ export let state: IState = {
             userId: 1,
             date: new Date()
         }]
+}
+export const handlerOnClickAddPost = (text: string, userId: number) => {
+    state.posts.push({id: Date.now(), text, userId, date: new Date()})
+    callObserver()
+}
+export const handlerOnClickRemovePost = (id: number) => {
+    state.posts = [...state.posts.filter(item => item.id !== id)]
+    callObserver()
 }

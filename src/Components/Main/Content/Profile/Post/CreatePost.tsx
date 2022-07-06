@@ -2,22 +2,25 @@ import React, {useState} from 'react';
 import styles from "./CreatePost.module.css";
 
 interface ICreatePost {
-    activPost: boolean,
-    handlerOnClickExpandPostForm(): void,
     handlerOnClickAddPost(text: string, userId: number): void
 }
 
-export const CreatePost: React.FC<ICreatePost> = ({activPost, handlerOnClickExpandPostForm, handlerOnClickAddPost}) => {
+export const CreatePost: React.FC<ICreatePost> = ({ handlerOnClickAddPost}) => {
     const [postValue, setPostValue] = useState<string>('')
+    const [activatePost, setActivatePost] = useState<boolean>(false);
     const handlerOnChangeGetTextAreaValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setPostValue(e.target.value)
+    }
+    const handlerOnClickExpandPostForm = () => {
+        setActivatePost(true)
     }
     const handlerOnClickSendPost = () => {
         handlerOnClickAddPost(postValue, 1)
         setPostValue('')
+        setActivatePost(false)
     }
     const rootStyle = [styles.userpost_add]
-    if (activPost) {
+    if (activatePost) {
         rootStyle.push(styles.active)
     }
 
@@ -27,11 +30,11 @@ export const CreatePost: React.FC<ICreatePost> = ({activPost, handlerOnClickExpa
                     <textarea
                         value={postValue}
                         onChange={handlerOnChangeGetTextAreaValue}
-                        placeholder={activPost ? '' : 'Что у вас нового'}
+                        placeholder={activatePost ? '' : 'Что у вас нового'}
                         onClick={handlerOnClickExpandPostForm}>
                     </textarea>
 
-                {activPost && <div className={styles.empty}>
+                {activatePost && <div className={styles.empty}>
                     <div>
                     </div>
                     <button onClick={handlerOnClickSendPost}>Отправить</button>

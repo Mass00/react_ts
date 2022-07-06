@@ -2,13 +2,13 @@ import React from "react";
 import styles from './Chat.module.css'
 import {useParams} from "react-router-dom";
 import {PrivateMessege} from "./Message/Message";
-import {IDialog, IUser} from "../../../../Redux/State";
+import {IDialogs, IUsers} from "../../../../Redux/State";
 import {IQuickChat} from "../../../../App";
 
 
 interface IChat {
-    users: IUser[],
-    dialogs: IDialog[],
+    users: IUsers[],
+    dialogs: IDialogs[],
     quickChat: IQuickChat[]
 }
 
