@@ -12,6 +12,9 @@ export const CreatePost: React.FC<ICreatePost> = (props) => {
     const handlerOnChangeGetTextAreaValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setPostValue(e.target.value)
     }
+    const handlerOnBlurExpandPostForm = () => {
+        setActivatePost(false)
+    }
     const handlerOnClickExpandPostForm = () => {
         setActivatePost(true)
     }
@@ -34,6 +37,7 @@ export const CreatePost: React.FC<ICreatePost> = (props) => {
                     <textarea
                         value={postValue}
                         onChange={handlerOnChangeGetTextAreaValue}
+                        onBlur={handlerOnBlurExpandPostForm}
                         placeholder={activatePost ? '' : 'Что у вас нового'}
                         onClick={handlerOnClickExpandPostForm}>
                     </textarea>
