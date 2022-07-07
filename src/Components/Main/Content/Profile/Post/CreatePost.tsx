@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import styles from "./CreatePost.module.css";
+import {IActionAddPost} from "../../../../../Redux/State";
 
 interface ICreatePost {
-    handlerOnClickAddPost(text: string, userId: number): void
+    dispatch: (action: IActionAddPost) => void
 }
 
-export const CreatePost: React.FC<ICreatePost> = ({ handlerOnClickAddPost}) => {
+export const CreatePost: React.FC<ICreatePost> = (props) => {
     const [postValue, setPostValue] = useState<string>('')
     const [activatePost, setActivatePost] = useState<boolean>(false);
     const handlerOnChangeGetTextAreaValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -15,9 +16,12 @@ export const CreatePost: React.FC<ICreatePost> = ({ handlerOnClickAddPost}) => {
         setActivatePost(true)
     }
     const handlerOnClickSendPost = () => {
-        handlerOnClickAddPost(postValue, 1)
-        setPostValue('')
-        setActivatePost(false)
+        if (postValue) {
+            const action: IActionAddPost = {type: 'ACTION_ADD_POST', text: postValue, userId: 1}
+            props.dispatch(action)
+            setPostValue('')
+            setActivatePost(false)
+        }
     }
     const rootStyle = [styles.userpost_add]
     if (activatePost) {
@@ -25,7 +29,7 @@ export const CreatePost: React.FC<ICreatePost> = ({ handlerOnClickAddPost}) => {
     }
 
     return (
-        <section className={rootStyle.join(' ')} >
+        <section className={rootStyle.join(' ')}>
             <div>
                     <textarea
                         value={postValue}

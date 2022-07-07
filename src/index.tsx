@@ -15,8 +15,7 @@ const reRender = () => {
             <BrowserRouter>
                 <App
                     appState={store.getState()}
-                    handlerOnClickAddPost={store.addPost.bind(store)}
-                    handlerOnClickRemovePost={store.removePost.bind(store)}
+                    dispatch={store.dispatch.bind(store)}
                 />
             </BrowserRouter>
         </React.StrictMode>

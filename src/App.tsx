@@ -8,24 +8,15 @@ import {Profile} from './Components/Main/Content/Profile/Profile';
 import {Dialogs} from './Components/Main/Content/Dialogs/Dialogs';
 import {Chat} from "./Components/Main/Content/Chat/Chat";
 import {NotFound} from "./Components/Main/NotFound";
-import {IState} from "./Redux/State";
+import {IActionAddPost, IActionRemovePost, IState} from "./Redux/State";
 
 interface IApp {
     appState: IState
-    handlerOnClickAddPost(text: string, userId: number): void
-    handlerOnClickRemovePost(id: number): void
+    dispatch: (action: IActionAddPost | IActionRemovePost) => void
 }
-
 export interface IQuickChat {
     id: number,
     userName: string
-}
-
-export interface IPost {
-    id: number
-    text: string,
-    userId: number,
-    date: Date
 }
 
 const App: React.FC<IApp> = (props) => {
@@ -47,17 +38,16 @@ const App: React.FC<IApp> = (props) => {
             <Header/>
             <Routes>
                 <Route path="/" element={<Main menu={props.appState.sideBarMenu}/>}>
+
                     <Route index element={<Profile
                         users={props.appState.usersData}
-                        handlerOnClickAddPost={props.handlerOnClickAddPost}
-                        handlerOnClickRemovePost={props.handlerOnClickRemovePost}
+                        dispatch={props.dispatch}
                         posts={props.appState.profileData.posts}
 
                     />}/>
                     <Route path="profile" element={<Profile
                         users={props.appState.usersData}
-                        handlerOnClickAddPost={props.handlerOnClickAddPost}
-                        handlerOnClickRemovePost={props.handlerOnClickRemovePost}
+                        dispatch={props.dispatch}
                         posts={props.appState.profileData.posts}
                     />}/>
                     <Route path="dialogs"

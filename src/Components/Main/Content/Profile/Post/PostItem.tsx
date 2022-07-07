@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./PostItem.module.css";
 import avatarImg from "./avatars/avatar.jpg"
 import { type } from "os";
+import {IActionAddPost, IActionRemovePost} from "../../../../../Redux/State";
 
 
 
@@ -10,12 +11,13 @@ type userProps = {
     text: string
     userName: string
     date: Date
-    handlerOnClickRemovePost(id: number): void
+    dispatch: (action: IActionRemovePost) => void
 }
 
 export function PostItem(props: userProps) {
     const removePost = () => {
-        props.handlerOnClickRemovePost(props.id)
+        const action:IActionRemovePost = {type: 'ACTION_REMOVE_POST', id: props.id}
+        props.dispatch(action)
     }
     return (
         <div className={styles.content}>

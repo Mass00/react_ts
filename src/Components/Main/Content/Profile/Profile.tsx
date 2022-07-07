@@ -6,13 +6,12 @@ import {Usersettings} from "./Usersettings/Usersettings";
 import {CreatePost} from "./Post/CreatePost";
 import {PostList} from "./Post/PostList";
 
-import {IPosts, IUsersData} from "../../../../Redux/State";
+import {IActionAddPost, IActionRemovePost, IPosts, IUsersData} from "../../../../Redux/State";
 
 interface IProfile {
     posts: IPosts[]
     users: IUsersData[]
-    handlerOnClickAddPost(text: string, userId: number): void
-    handlerOnClickRemovePost(id: number): void
+    dispatch: (action: IActionAddPost | IActionRemovePost) => void
 }
 export const Profile: React.FC<IProfile> = (props) => {
 
@@ -22,7 +21,7 @@ export const Profile: React.FC<IProfile> = (props) => {
             <section className={styles.test}>
                 <Userinfo/>
                 <CreatePost
-                    handlerOnClickAddPost={props.handlerOnClickAddPost}
+                    dispatch={props.dispatch}
                 />
                 <section className={styles.search}>
                     <div>
@@ -32,7 +31,7 @@ export const Profile: React.FC<IProfile> = (props) => {
                 <PostList
                     posts={props.posts}
                     users={props.users}
-                    handlerOnClickRemovePost={props.handlerOnClickRemovePost}
+                    dispatch={props.dispatch}
                 />
             </section>
         </section>

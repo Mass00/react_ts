@@ -2,12 +2,12 @@ import React from 'react';
 import styles from "../Profile.module.css";
 import {PostItem} from "./PostItem";
 
-import {IPosts,IUsersData} from "../../../../../Redux/State";
+import {IActionAddPost, IActionRemovePost, IPosts, IUsersData} from "../../../../../Redux/State";
 
 interface IPostList {
     posts: IPosts[]
     users: IUsersData[]
-    handlerOnClickRemovePost(id: number): void
+    dispatch: (action: IActionAddPost | IActionRemovePost) => void
 }
 
 export const PostList: React.FC<IPostList> = (props) => {
@@ -24,7 +24,7 @@ export const PostList: React.FC<IPostList> = (props) => {
                                   userName={props.users[item.userId-1].name}
                                   date={item.date}
                                   id={item.id}
-                                  handlerOnClickRemovePost={props.handlerOnClickRemovePost}
+                                  dispatch={props.dispatch}
                         />
                     )
                 })}

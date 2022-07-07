@@ -2,41 +2,62 @@ export interface IUsersData {
     id: number,
     name: string
 }
+
 export interface ISideBarMenu {
     name: string,
     link: string,
     ico: number
 }
+
 export interface IDialogs {
     dialogId: number,
     id: number,
     userId: number,
     text: string
 }
+
 interface dialogsPageData {
     dialogs: IDialogs[]
 }
+
 export interface IPosts {
     id: number,
     text: string,
     userId: number,
     date: Date
 }
+
 interface IProfileData {
     posts: IPosts[]
 }
+
 export interface IState {
     usersData: IUsersData[],
     dialogData: dialogsPageData,
     sideBarMenu: ISideBarMenu[],
     profileData: IProfileData,
 }
+
+export interface IActionAddPost {
+    type: 'ACTION_ADD_POST',
+    text: string,
+    userId: number
+}
+
+export interface IActionRemovePost {
+    type: 'ACTION_REMOVE_POST',
+    id: number
+}
+
+
 export interface IStore {
     _state: IState,
     addPost: (text: string, userId: number) => void,
     removePost: (id: number) => void,
     _callSubscriber: () => void
     subscribe: (callback: () => void) => void
+    dispatch: (action: IActionAddPost | IActionRemovePost) => void
+
     getState(): IState
 }
 
@@ -117,7 +138,17 @@ export let store: IStore = {
     subscribe(callback: () => void) {
         this._callSubscriber = callback
     },
-    getState(){
+    getState() {
         return this._state
+    },
+    dispatch(action){
+        if(action.type === 'ACTION_ADD_POST'){
+            this._state.profileData.posts.push({id: Date.now(), text: action.text, userId: action.userId, date: new Date()})
+            this._callSubscriber()
+        }
+        if(action.type === 'ACTION_REMOVE_POST'){
+            this._state.profileData.posts = [...this._state.profileData.posts].filter(item => item.id !== action.id)
+            this._callSubscriber()
+        }
     }
 }

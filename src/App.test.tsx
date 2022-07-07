@@ -6,8 +6,7 @@ import {store} from "./Redux/State";
 test('renders learn react link', () => {
   render(                <App
       appState={store.getState()}
-      handlerOnClickAddPost={store.addPost}
-      handlerOnClickRemovePost={store.removePost}
+      dispatch={store.dispatch.bind(store)}
   />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
